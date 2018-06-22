@@ -13,33 +13,29 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 from firstapp import views
 
 
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    # url(r'^main', views.index, name='home'),
-    # url(r'^about', views.about),
-    # url(r'^contact', views.contact),
 
-    # url(r'^products', views.products),
-    # url(r'^products/(?P<productid>\d+)/', views.products),
-    # url(r'^users', views.users),
-    # url(r'^users/(?P<id>\d+)/(?P<name>\D+)/', views.users),
+    url(r'main/', views.main),
+    url(r'getpublish/', views.get_notes_main),
+    url(r'registr/', views.registr),
+    url(r'auth/', views.auth),
 
-    # url('products/<int:productid>/', views.products),
-    # url('users/', views.users),
+    url(r'user/', views.user),
+    url(r'get/', views.get_notes),
+    url(r'create/', views.create_notes),
+    url(r'edit/(?P<id>[0-9]{1})', views.edit_note),
+    url(r'delete/(?P<id>[0-9]{1})', views.remove_note),
+    url(r'publish/(?P<id>[0-9]{1})', views.publish),
+    url(r'favorites/(?P<id>[0-9]{1})', views.favorites),
+    url(r'note/(?P<uuid>.*)/', views.get_uuid),
+    url(r'logout/', views.logout),
 
-    # url('about/', views.about),
-    # url('contact/', views.contact),
-    # url('details/', views.details),
-
-    # url(r'create/', views.create),
-    url(r'^edit/<int:id>', views.edit),
-    url(r'delete/<int:id>', views.delete),
-    url(r'^test/', views.test),
-    url(r'', views.index),
 
 ]
